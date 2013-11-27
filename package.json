@@ -1,0 +1,29 @@
+{
+    "name": "iterm-colors",
+    "version": "0.0.1",
+    "description": "Converts iTerm2's color schemes (plist files) to a JSON array useable in term.js and others",
+    "main": "index.js",
+    "bin": {
+        "iterm-colors": "./bin/iterm-colors.js"
+    },
+    "dependencies": {
+        "underscore": "1.4.4",
+
+        "commander": "2.0.0",
+
+        "plist": "0.4.3"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AaronO/iterm-colors.git"
+    },
+    "keywords": [
+        "iterm",
+        "colors",
+        "scheme",
+        "convert"
+    ],
+    "author": "Aaron O'Mullan",
+    "license": "Apache v2"
+}
