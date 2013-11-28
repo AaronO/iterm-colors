@@ -1,6 +1,6 @@
 {
     "name": "iterm-colors",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Converts iTerm2's color schemes (plist files) to a JSON array useable in term.js and others",
     "main": "index.js",
     "bin": {
