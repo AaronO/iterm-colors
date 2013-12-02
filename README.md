@@ -33,3 +33,18 @@ var icolors = require('iterm-colors');
 var ansiColors = icolors(fs.readFileSync('SOME_FILE_PATH.itermcolors'));
 
 ```
+
+### Library (bundle access)
+
+```js
+// iterm-colors module/function
+var bundle = require('iterm-colors/bundle.json');
+
+// Github's theme
+bundle.github;
+
+// Monokai theme
+bundle.monokai_soda;
+
+...
+```
