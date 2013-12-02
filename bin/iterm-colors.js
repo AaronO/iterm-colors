@@ -17,19 +17,33 @@ var parser = require('../');
 
 // General options
 prog
-.version(pkg.version);
+.version(pkg.version)
+.option('-p, --pretty', 'Pretty print JSON');
 
+
+function jsonify(data) {
+    // Pretty print if activated
+    if(prog.pretty) {
+        return JSON.stringify(
+            data,
+            null,
+            4 // 4 spaces
+        );
+    }
+
+    // Otherwise print inline
+    return JSON.stringify(data);
+}
 
 // Commands
 prog
 .command('compile [filename]')
 .description('Compile an *.itermcolors file to a JSON scheme')
 .action(function(filename, opts) {
+
     // Output JSON color array
-    console.log(JSON.stringify(
-        parser(fs.readFileSync(filename)),
-        null,
-        4 // 4 spaces
+    console.log(jsonify(
+        parser(fs.readFileSync(filename))
     ));
 });
 
@@ -51,7 +65,7 @@ prog
     }, {});
 
     // Output bundle's JSON
-    console.log(JSON.stringify(bundle));
+    console.log(jsonify(bundle));
 });
 
 
