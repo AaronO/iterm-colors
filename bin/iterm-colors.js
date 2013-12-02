@@ -41,12 +41,12 @@ prog
     // Merge scheme's together and add name attribute based on filename
     var bundle = fs.readdirSync(dir).map(function(filename) {
         var name = filename.split('.')[0];
-        var data = require(path(dir, filename));
+        var data = require('../' + path.join(dir, filename));
         data.name = name;
 
         return data;
     }).reduce(function(bundle, data) {
-        bundle[name] = data;
+        bundle[data.name] = data;
         return bundle;
     }, {});
 
