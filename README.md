@@ -157,3 +157,6 @@ bundle.monokai_soda;
 ...
 ```
 
+## Disclaimer
+
+The original `iTerm2` colorschemes (and screenshots) were sourced from here : https://github.com/mbadolato/iTerm2-Color-Schemes.
