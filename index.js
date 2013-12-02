@@ -30,30 +30,52 @@ function parseColor(color) {
     ].map(_color).join('');
 }
 
-function isAnsi(colorKey) {
-    return colorKey.indexOf('Ansi ') === 0;
+//
+// pObj: Parsed plist object
+// filter: Regex or filter function
+// sorter: Optional sorting functon
+function getColorset(pObj, filter, sorter) {
+    var filterFunc = (
+        // Regex to a function
+        (filter.test && filter.test.bind(filter)) ||
+
+        // Fallback to a normal function
+        filter
+    );
+
+    return _.chain(pObj)
+    .pairs()
+    .filter(_.compose(filterFunc, _.first))
+    .sortBy(sorter)
+    .pluck(1)
+    .map(parseColor)
+    .value();
 }
 
 function parse(plistStr) {
     // Build JS object from plist file's data
     var pObj = plist.parseStringSync(plistStr.toString());
 
-    // Get ainsi colors in order
-    var ainsi = _.chain(pObj)
-    .pairs()
-    .filter(function(pair) {
-        return isAnsi(pair[0]);
-    })
-    .sortBy(function(pair) {
-        // "Ansi X Color"
-        // Extract X
-        return parseInt(pair[0].split(' ')[1], 10);
-    })
-    .pluck(1)
-    .map(parseColor)
-    .value();
+    // Quick function
+    var get = _.partial(getColorset, pObj);
 
-    return ainsi;
+    return {
+        // Special colors
+        foreground: get(/Foreground Color/)[0],
+        background: get(/Background Color/)[0],
+
+        // Cursor colors
+        cursor: get(/Cursor Color/)[0],
+        cursor_text: get(/Cursor Text Color/)[0],
+
+        // Standard 16 colors
+        palette: get(/Ansi .*/, function(pair) {
+            // "Ansi X Color"
+            // Extract X
+            return parseInt(pair[0].split(' ')[1], 10);
+        }),
+
+    };
 }
 
 // Exports
