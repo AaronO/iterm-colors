@@ -1,0 +1,24 @@
+{
+    "foreground": "#ffffff",
+    "background": "#333333",
+    "cursor": "#00ff00",
+    "cursor_text": "#000000",
+    "palette": [
+        "#4d4d4d",
+        "#ff2b2b",
+        "#98fb98",
+        "#f0e68c",
+        "#cd853f",
+        "#ffdead",
+        "#ffa0a0",
+        "#f5deb3",
+        "#555555",
+        "#ff5555",
+        "#55ff55",
+        "#ffff55",
+        "#87ceff",
+        "#ff55ff",
+        "#ffd700",
+        "#ffffff"
+    ]
+}
