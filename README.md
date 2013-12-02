@@ -11,8 +11,6 @@ npm install -g iterm-colors
 
 ## Theme screenshots
 
-##Screenshots##
-
 **blazer**
 
 ![Screenshot](https://github.com/AaronO/iterm-colors/raw/master/screenshots/blazer.png)
