@@ -23,7 +23,11 @@ if(_.isEmpty(prog.parse(process.argv).args)) { return prog.help(); }
 
 function convertFile(filename) {
     // Output JSON color array
-    console.log(JSON.stringify(parser(fs.readFileSync(filename))));
+    console.log(JSON.stringify(
+        parser(fs.readFileSync(filename)),
+        null,
+        4 // 4 spaces
+    ));
 }
 
 // Parse files given on command line
