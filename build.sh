@@ -20,7 +20,7 @@ function build {
     echo "Building ${filename}" >&2
 
     # Compile and save
-    ${BIN} $1 > "${OUTPUT_DIR}/${filename}.json"
+    ${BIN} compile $1 > "${OUTPUT_DIR}/${filename}.json"
 }
 
 # Ensure output dir exists
