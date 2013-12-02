@@ -11,7 +11,9 @@
 
         "commander": "2.0.0",
 
-        "plist": "0.4.3"
+        "plist": "0.4.3",
+
+        "event-stream": "3.0.16"
     },
 
     "repository": {
